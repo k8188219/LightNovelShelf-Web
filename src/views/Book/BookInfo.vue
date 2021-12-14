@@ -82,7 +82,8 @@ export default defineComponent({
     const router = useRouter()
     let book = ref<any>({})
     const getInfo = async () => {
-      book.value = await getBookInfo(~~(props.bid || '1'))
+      const res: any = await getBookInfo(~~(props.bid || '1'))
+      book.value = res.Book
     }
     const startRead = async () => {
       let history = await loadHistory(0, ~~props.bid)

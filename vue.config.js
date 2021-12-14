@@ -41,7 +41,9 @@ module.exports = {
       fallback: {
         assert: require.resolve('assert/'),
         util: require.resolve('util/'),
-        process: require.resolve('process/browser')
+        process: require.resolve('process/browser'),
+        zlib: require.resolve('browserify-zlib'),
+        stream: require.resolve('stream-browserify')
       }
     }
   },

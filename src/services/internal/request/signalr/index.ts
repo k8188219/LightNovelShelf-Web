@@ -8,6 +8,7 @@ import { longTermToken, sessionToken } from '@/utils/session'
 import { refreshToken } from '@/services/user'
 import { getErrMsg } from '@/utils/getErrMsg'
 import { unAuthenticationNotify } from '@/utils/biz/unAuthenticationNotify'
+import { JsonCompressionHubProtocol } from '@/services/internal/request/signalr/JsonCompressionHubProtocol'
 
 /** signalr接入点 */
 const HOST = `${VUE_APP_API_SERVER}/hub/api`
@@ -39,7 +40,7 @@ const hub: HubConnection = new HubConnectionBuilder()
       return token
     }
   })
-  .withHubProtocol(new MessagePackHubProtocol())
+  .withHubProtocol(new JsonCompressionHubProtocol())
   .configureLogging(__DEV__ ? LogLevel.Information : LogLevel.Critical)
   .build()
 
